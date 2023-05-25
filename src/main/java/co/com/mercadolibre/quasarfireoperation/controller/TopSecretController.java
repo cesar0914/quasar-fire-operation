@@ -2,6 +2,7 @@ package co.com.mercadolibre.quasarfireoperation.controller;
 
 import co.com.mercadolibre.quasarfireoperation.model.dto.request.TopSecretRequest;
 import co.com.mercadolibre.quasarfireoperation.model.dto.response.TopSecretResponse;
+import co.com.mercadolibre.quasarfireoperation.service.TopSecretService;
 import co.com.mercadolibre.quasarfireoperation.utils.DocumentationConstant;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -9,15 +10,21 @@ import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.awt.*;
+
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/quasar/")
 public class TopSecretController {
+
+    private final TopSecretService topSecretService;
 
     @PostMapping("/topsecret")
     @Operation(summary = "Obtener la posición y el mensaje secreto.", description = "Servicio encargado de obtener la posición de la nave y el mensaje" +
@@ -34,10 +41,9 @@ public class TopSecretController {
             @ApiResponse(responseCode = "500", description = "* Internal Server Error",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseEntity.class)))
     })
-    public ResponseEntity<?> getTopSecret(@RequestBody TopSecretRequest request) {
-        // Implementa la lógica para determinar la posición y el mensaje
-        // utilizando los datos proporcionados en la solicitud
-
-        return ResponseEntity.ok("working");
+    public ResponseEntity<TopSecretResponse> getTopSecret(@RequestBody TopSecretRequest request) {
+        String message = topSecretService.getMessage(request.getSatellites());
+        Point position = topSecretService.GetLocation(request.getSatellites());
+        return ResponseEntity.ok(TopSecretResponse.builder().message(message).position(position).build());
     }
 }
