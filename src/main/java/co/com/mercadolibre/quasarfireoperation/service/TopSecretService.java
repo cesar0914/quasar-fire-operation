@@ -1,11 +1,10 @@
 package co.com.mercadolibre.quasarfireoperation.service;
 
 import co.com.mercadolibre.quasarfireoperation.model.dto.SatelliteDto;
+import co.com.mercadolibre.quasarfireoperation.model.dto.response.TopSecretResponse;
 
-import java.awt.*;
 import java.util.List;
 
 public interface TopSecretService {
-    String getMessage(List<SatelliteDto> satelliteDtoList);
-    Point GetLocation(List<SatelliteDto> satelliteDtoList);
+    TopSecretResponse getTopSecret(List<SatelliteDto> satellites);
 }

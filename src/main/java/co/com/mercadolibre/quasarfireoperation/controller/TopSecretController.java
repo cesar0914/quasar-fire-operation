@@ -43,8 +43,7 @@ public class TopSecretController {
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiException.class)))
     })
     public ResponseEntity<TopSecretResponse> getTopSecret(@RequestBody TopSecretRequest request) {
-        String message = topSecretService.getMessage(request.getSatellites());
-        Point position = topSecretService.GetLocation(request.getSatellites());
-        return ResponseEntity.ok(TopSecretResponse.builder().message(message).position(position).build());
+        TopSecretResponse response = topSecretService.getTopSecret(request.getSatellites());
+        return ResponseEntity.ok(response);
     }
 }

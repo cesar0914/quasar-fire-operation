@@ -13,4 +13,11 @@ public class ApiExceptionHandler {
         ApiException apiException = ApiException.builder().httpStatus(notFound).message(e.getMessage()).code(notFound.value()).build();
         return new ResponseEntity<>(apiException, notFound);
     }
+
+    @ExceptionHandler(InternalServerErrorException.class)
+    public ResponseEntity<ApiException> handlerRequestException(InternalServerErrorException e) {
+        HttpStatus internalServerError = HttpStatus.INTERNAL_SERVER_ERROR;
+        ApiException apiException = ApiException.builder().httpStatus(internalServerError).message(e.getMessage()).code(internalServerError.value()).build();
+        return new ResponseEntity<>(apiException, internalServerError);
+    }
 }
