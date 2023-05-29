@@ -16,4 +16,7 @@ public class SwaggerConfig {
                         .description("Documentación técnica para el consumo de los servicios referentes a Quasar Fire Operation API.")
                         .version("v1.0.0"));
     }
+
+
+
 }

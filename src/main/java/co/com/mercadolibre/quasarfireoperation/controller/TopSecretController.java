@@ -1,5 +1,6 @@
 package co.com.mercadolibre.quasarfireoperation.controller;
 
+import co.com.mercadolibre.quasarfireoperation.exception.ApiException;
 import co.com.mercadolibre.quasarfireoperation.model.dto.request.TopSecretRequest;
 import co.com.mercadolibre.quasarfireoperation.model.dto.response.TopSecretResponse;
 import co.com.mercadolibre.quasarfireoperation.service.TopSecretService;
@@ -35,11 +36,11 @@ public class TopSecretController {
                             examples = {@ExampleObject(name = "Successful operation", summary = "Successful operation",
                                     value = DocumentationConstant.GET_TOP_SECRET_OK_EXAMPLE)})),
             @ApiResponse(responseCode = "400", description = "* Bad Request",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseEntity.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiException.class))),
             @ApiResponse(responseCode = "404", description = "Not Found",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseEntity.class))),
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiException.class))),
             @ApiResponse(responseCode = "500", description = "* Internal Server Error",
-                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ResponseEntity.class)))
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiException.class)))
     })
     public ResponseEntity<TopSecretResponse> getTopSecret(@RequestBody TopSecretRequest request) {
         String message = topSecretService.getMessage(request.getSatellites());

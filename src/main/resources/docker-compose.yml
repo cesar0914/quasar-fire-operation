@@ -1,0 +1,13 @@
+version: '3'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Transacciones.*
+      POSTGRES_DB: postgres
+    ports:
+      - 3000:5432
+    volumes:
+      - D:\Documents\MercadoLibre\data:/var/lib/postgresql/data
