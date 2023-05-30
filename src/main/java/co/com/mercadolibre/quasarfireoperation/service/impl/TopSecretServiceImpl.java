@@ -8,14 +8,16 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.*;
 
 import static co.com.mercadolibre.quasarfireoperation.utils.TopSecretConstant.*;
 
 @Service
 @Log4j2
 public class TopSecretServiceImpl implements TopSecretService {
+
+    private static final Map<String, SatelliteDto> satelliteData = new HashMap<>();
 
     public Point getLocation(double[] distances) {
         log.info("Getting location");
@@ -78,6 +80,10 @@ public class TopSecretServiceImpl implements TopSecretService {
             }
         }
 
+        if (result.contains("")){
+            throw new NotFoundException(NOT_FOUND_MESSAGE_ERROR);
+        }
+
         return String.join(" ", result);
     }
 
@@ -94,6 +100,22 @@ public class TopSecretServiceImpl implements TopSecretService {
         String message = getMessage(messages);
 
         return TopSecretResponse.builder().position(location).message(message).build();
+    }
+
+    @Override
+    public void updateSatelliteData(String satelliteName, SatelliteDto satellite) {
+        log.info("Updating satellite data");
+        satelliteData.put(satelliteName,satellite);
+    }
+
+    @Override
+    public TopSecretResponse getTopSecretSplit() {
+        log.info("Getting top secret split");
+        if (satelliteData.size() < 3){
+            throw new NotFoundException(NOT_FOUND_INFO_ERROR);
+        }
+        Collection<SatelliteDto> values = satelliteData.values();
+        return getTopSecret(new ArrayList<>(values));
     }
 
 }

@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface TopSecretService {
     TopSecretResponse getTopSecret(List<SatelliteDto> satellites);
+
+    void updateSatelliteData(String satelliteName, SatelliteDto satellite);
+
+    TopSecretResponse getTopSecretSplit();
 }

@@ -10,7 +10,9 @@ public class TopSecretConstant {
     public static final Point SATO_POSITION = new Point(500, 100);
 
     //    Error messages
-    public static final String NOT_FOUND_POSITION_ERROR = "No fue posible determinar la posición del emisor";
+    public static final String NOT_FOUND_POSITION_ERROR = "No fue posible determinar la posición del emisor.";
+    public static final String NOT_FOUND_MESSAGE_ERROR = "No fue posible determinar el mensaje.";
+    public static final String NOT_FOUND_INFO_ERROR = "No existe suficiente información para determinar la posición y el mensaje del emisor.";
 
 
 }
