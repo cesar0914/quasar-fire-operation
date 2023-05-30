@@ -57,7 +57,7 @@ public class TopSecretServiceImpl implements TopSecretService {
 
     }
 
-    private String getMessage(String[][] messages) {
+    public String getMessage(String[][] messages) {
         log.info("Getting message");
         LinkedList<String> result = new LinkedList<>();
         int maxLength = 0;

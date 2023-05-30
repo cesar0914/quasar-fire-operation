@@ -11,8 +11,6 @@ public class TopSecretConstant {
 
     //    Error messages
     public static final String NOT_FOUND_POSITION_ERROR = "No fue posible determinar la posición del emisor";
-    public static final String NOT_FOUND_MESSAGE_ERROR = "No fue posible determinar el mensaje del emisor";
-    public static final String GENERIC_ERROR_MESSAGE = "Se ha presentado un error en la ejecución del proceso";
 
 
 }
