@@ -1,23 +1,31 @@
 package co.com.mercadolibre.quasarfireoperation.service.impl;
 
+import co.com.mercadolibre.quasarfireoperation.exception.InternalServerErrorException;
 import co.com.mercadolibre.quasarfireoperation.exception.NotFoundException;
 import co.com.mercadolibre.quasarfireoperation.model.dto.SatelliteDto;
 import co.com.mercadolibre.quasarfireoperation.model.dto.response.TopSecretResponse;
+import co.com.mercadolibre.quasarfireoperation.model.entity.Satellite;
+import co.com.mercadolibre.quasarfireoperation.repository.SatelliteRepository;
 import co.com.mercadolibre.quasarfireoperation.service.TopSecretService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.*;
+import java.util.stream.Collectors;
 
 import static co.com.mercadolibre.quasarfireoperation.utils.TopSecretConstant.*;
 
-@Service
 @Log4j2
+@Service
+@RequiredArgsConstructor
 public class TopSecretServiceImpl implements TopSecretService {
 
-    private static final Map<String, SatelliteDto> satelliteData = new HashMap<>();
+    private final SatelliteRepository satelliteRepository;
+    private final ModelMapper mapper;
 
     public Point getLocation(double[] distances) {
         log.info("Getting location");
@@ -92,30 +100,64 @@ public class TopSecretServiceImpl implements TopSecretService {
         log.info("Getting top secret info");
         double[] distances;
         String[][] messages;
+        Point location;
+        String message;
 
-        distances = satellites.stream().mapToDouble(SatelliteDto::getDistance).toArray();
-        messages = satellites.stream().map(SatelliteDto::getMessage).toArray(String[][]::new);
-
-        Point location = getLocation(distances);
-        String message = getMessage(messages);
+        try {
+            distances = satellites.stream().mapToDouble(SatelliteDto::getDistance).toArray();
+            messages = satellites.stream().map(SatelliteDto::getMessage).toArray(String[][]::new);
+            location = getLocation(distances);
+            message = getMessage(messages);
+        }catch (NotFoundException nfe){
+            log.error(nfe.getMessage());
+            throw new NotFoundException(nfe.getMessage());
+        }catch (Exception e){
+            log.error(e.getMessage());
+            throw new InternalServerErrorException(INTERNAL_SERVER_ERROR);
+        }
 
         return TopSecretResponse.builder().position(location).message(message).build();
     }
 
     @Override
-    public void updateSatelliteData(String satelliteName, SatelliteDto satellite) {
+    public void updateSatelliteData(String satelliteName, SatelliteDto satelliteDto) {
         log.info("Updating satellite data");
-        satelliteData.put(satelliteName,satellite);
+
+        try {
+            Satellite existingSatellite = satelliteRepository.findByName(satelliteName);
+            if (existingSatellite == null) {
+                Satellite satellite = new Satellite();
+                satellite.setName(satelliteName);
+                satellite.setDistance(satelliteDto.getDistance());
+                satellite.setMessage(satelliteDto.getMessage());
+                satelliteRepository.save(satellite);
+            } else {
+                existingSatellite.setDistance(satelliteDto.getDistance());
+                satelliteRepository.save(existingSatellite);
+            }
+        }catch (Exception e){
+            log.error(e.getMessage());
+            throw new InternalServerErrorException(INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Override
     public TopSecretResponse getTopSecretSplit() {
         log.info("Getting top secret split");
-        if (satelliteData.size() < 3){
+        List<SatelliteDto> satelliteDtoList;
+        List<Satellite> satelliteList = satelliteRepository.findAll();
+        if (satelliteList.size() < 3) {
             throw new NotFoundException(NOT_FOUND_INFO_ERROR);
         }
-        Collection<SatelliteDto> values = satelliteData.values();
-        return getTopSecret(new ArrayList<>(values));
-    }
+        try {
+            satelliteDtoList = satelliteList.stream()
+                    .map((element) -> mapper.map(element, SatelliteDto.class))
+                    .collect(Collectors.toList());
 
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            throw new InternalServerErrorException(INTERNAL_SERVER_ERROR);
+        }
+        return getTopSecret(satelliteDtoList);
+    }
 }

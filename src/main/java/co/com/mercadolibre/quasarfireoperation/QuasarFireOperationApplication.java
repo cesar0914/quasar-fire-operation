@@ -9,5 +9,4 @@ public class QuasarFireOperationApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(QuasarFireOperationApplication.class, args);
 	}
-
 }
