@@ -148,4 +148,5 @@ El proyecto también incluye pruebas unitarias para garantizar la calidad y el c
 
 Además, se utiliza Docker y Docker Compose para facilitar la ejecución del proyecto en diferentes entornos y simplificar la configuración de los servicios necesarios, como la base de datos MongoDB y Mongo Express.
 
+
 Esta arquitectura modular y basada en microservicios permite una mayor flexibilidad, escalabilidad y mantenibilidad del proyecto. Cada componente tiene responsabilidades específicas y puede ser desarrollado, probado y desplegado de manera independiente, lo que facilita la evolución y la gestión del sistema en su conjunto.
