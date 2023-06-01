@@ -10,6 +10,14 @@ spring:
       port: 27017
       host: localhost
 
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
+  packagesToScan: co.com.mercadolibre.quasarfireoperation.controller
+
+
 server:
   port: 9500
 

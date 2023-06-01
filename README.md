@@ -148,14 +148,5 @@ El proyecto también incluye pruebas unitarias para garantizar la calidad y el c
 
 Además, se utiliza Docker y Docker Compose para facilitar la ejecución del proyecto en diferentes entornos y simplificar la configuración de los servicios necesarios, como la base de datos MongoDB y Mongo Express.
 
+
 Esta arquitectura modular y basada en microservicios permite una mayor flexibilidad, escalabilidad y mantenibilidad del proyecto. Cada componente tiene responsabilidades específicas y puede ser desarrollado, probado y desplegado de manera independiente, lo que facilita la evolución y la gestión del sistema en su conjunto.
-
-## **Conclusiones:**
-
-En este proyecto, hemos desarrollado un microservicio utilizando Spring Boot y MongoDB para determinar la posición y el mensaje emitido por una nave espacial en base a la información recibida de diferentes satélites. El uso de contenedores Docker nos ha permitido facilitar el despliegue y la configuración del entorno de desarrollo.
-
-El microservicio ofrece una API REST que permite enviar los datos de los satélites y obtener la posición y el mensaje de la nave. Además, hemos implementado pruebas unitarias para garantizar el correcto funcionamiento del código.
-
-El uso de una base de datos MongoDB nos permite almacenar y recuperar la información de manera eficiente. Además, la interfaz de Mongo Express nos ofrece una forma conveniente de administrar la base de datos de manera gráfica.
-
-Este proyecto puede servir como base para la implementación de sistemas más complejos de rastreo de naves espaciales o comunicaciones en tiempo real. Se pueden realizar mejoras adicionales, como la autenticación y autorización de la API, la implementación de un mecanismo de persistencia más robusto o la integración con otros sistemas.

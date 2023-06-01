@@ -1,0 +1,2 @@
+FROM openjdk:11
+ENTRYPOINT ["java", "-jar", "/opt/deploy/app/quasar-fire-operation.jar","--spring.config.location=file:/opt/deploy/config/application.yml"]
