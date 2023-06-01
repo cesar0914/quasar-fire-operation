@@ -1,8 +1,14 @@
+   
 ## **Proyecto Operación Fuego de Quásar**
 
 Este proyecto es una aplicación en Java que resuelve el desafío de la Operación Fuego de Quásar. La aplicación permite determinar la ubicación y el mensaje de auxilio de una nave a partir de la información recibida en diferentes satélites. Se utiliza Spring Boot como framework de desarrollo y MongoDB como base de datos para almacenar la información.
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/a1558f69d68788a5236e7d8ff412960f38bc0695dfecd04b.png)
+
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/a1558f69d68788a5236e7d8ff412960f38bc0695dfecd04b.png" alt="Descripción de la imagen">
+</p>
+
+
 
 ## **Uso:**
 
@@ -30,15 +36,15 @@ Al acceder a esta URL, se abrirá la interfaz de Mongo Express para la base de d
 
 Asegúrate de tener los siguientes requisitos antes de ejecutar el proyecto en entorno local:
 
-- Java 11 o superior
+Java 11 o superior
 
-- Docker y Docker Compose
+Docker y Docker Compose
 
-- Puertos 8081, 9500, 27017
+Puertos 8081, 9500, 27017
 
 ### **Proceso:**
 
-* Clona el repositorio a tu máquina local
+*   Clona el repositorio a tu máquina local
 
 ```plaintext
 git clone https://github.com/tu-usuario/quasar-fire-operation.git
@@ -80,7 +86,7 @@ La API Quasar Fire Operation proporciona los siguientes endpoints:
 *   Parámetros de entrada:
     *   Cuerpo (application/json):
 
-```json
+```plaintext
 {
   "satellites": [
     {
@@ -110,7 +116,7 @@ La API Quasar Fire Operation proporciona los siguientes endpoints:
 *   Parámetros de entrada:
     *   Cuerpo (application/json):
 
-```json
+```plaintext
 
 {
   "distance": 100.0,
@@ -132,6 +138,38 @@ El proyecto incluye pruebas unitarias utilizando JUnit 5 y Mockito. Para ejecuta
 ./mvnw test
 ```
 
+## **Diagramas**
+
+<br>
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/8341e74581d1b11946b7b93da60c2b6493f5ab110c22e22f.png" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/3c5d8fba7e8418c71dc91ef35de36f2354a6c46bfb1d378a.png" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/0e4631f2a62f971d2ef6386e88ad625ba1a9af23a3f540a7.png" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/5c03523e2fb47384a83d985d88f15033e6539001a1ca53e0.png" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/1c0dc8b08478422e607aecfabd2093196113676a78ae90fb.png" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/956702c2366513625f364e05b66556ac47af7e54da18a4f6.png" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/229204429d1554b54a74fcb28d95f73cb9179708e76b31a4.png" alt="Descripción de la imagen">
+</p>
+
+
 ## **Arquitectura:**
 
 La arquitectura del proyecto de Operación Fuego de Quásar sigue un enfoque basado en microservicios. Está compuesta por los siguientes componentes:
@@ -147,7 +185,6 @@ La comunicación entre los componentes se realiza a través de solicitudes HTTP 
 El proyecto también incluye pruebas unitarias para garantizar la calidad y el correcto funcionamiento del código. Estas pruebas se ejecutan utilizando JUnit 5 y Mockito, y se centran en verificar el comportamiento esperado de los diferentes componentes.
 
 Además, se utiliza Docker y Docker Compose para facilitar la ejecución del proyecto en diferentes entornos y simplificar la configuración de los servicios necesarios, como la base de datos MongoDB y Mongo Express.
-
 
 Esta arquitectura modular y basada en microservicios permite una mayor flexibilidad, escalabilidad y mantenibilidad del proyecto. Cada componente tiene responsabilidades específicas y puede ser desarrollado, probado y desplegado de manera independiente, lo que facilita la evolución y la gestión del sistema en su conjunto.
 
