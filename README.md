@@ -150,3 +150,7 @@ Además, se utiliza Docker y Docker Compose para facilitar la ejecución del pro
 
 
 Esta arquitectura modular y basada en microservicios permite una mayor flexibilidad, escalabilidad y mantenibilidad del proyecto. Cada componente tiene responsabilidades específicas y puede ser desarrollado, probado y desplegado de manera independiente, lo que facilita la evolución y la gestión del sistema en su conjunto.
+
+## **Conclusiones:**
+
+Este proyecto puede servir como base para la implementación de sistemas más complejos de rastreo de naves espaciales o comunicaciones en tiempo real. Se pueden realizar mejoras adicionales, como la autenticación y autorización de la API, la implementación de un mecanismo de persistencia más robusto o la integración con otros sistemas.
