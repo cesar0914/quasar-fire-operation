@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>co.com.mercadolibre</groupId>
 	<artifactId>quasar-fire-operation</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>quasar-fire-operation</name>
 	<description>Java program that returns the source and content of the help message</description>
 	<properties>
