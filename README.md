@@ -4,8 +4,9 @@
 Este proyecto es una aplicación en Java que resuelve el desafío de la Operación Fuego de Quásar. La aplicación permite determinar la ubicación y el mensaje de auxilio de una nave a partir de la información recibida en diferentes satélites. Se utiliza Spring Boot como framework de desarrollo y MongoDB como base de datos para almacenar la información.
 
 
+<br>
 <p align="center">
-  <img src="https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/a1558f69d68788a5236e7d8ff412960f38bc0695dfecd04b.png" alt="Descripción de la imagen">
+  <img src="diagrams/contex_image.png" alt="Config">
 </p>
 
 
